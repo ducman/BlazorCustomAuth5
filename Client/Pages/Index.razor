@@ -1,0 +1,15 @@
+﻿@page "/"
+@inject AuthenticationStateProvider AuthStateProvider
+@inject AnotherThingToInject AnotherThing
+<h1>Hello, world!</h1>
+
+<p>Refer to the <code>console.log</code> and notice an instance of the AuthStateProvider was created to be injected on this page.</p>
+<p>Navigate to Fetch Data and notice a different instance is created to be injected in the <code>CustomDelegatingHandler</code></p>
+
+@code {      
+    protected override async Task OnInitializedAsync()
+    {
+        var user = await AuthStateProvider.GetAuthenticationStateAsync();
+        // we're not really doing anything here, just want to inject the auth state provider to see it's id
+    }
+}
